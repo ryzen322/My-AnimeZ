@@ -1,49 +1,35 @@
+import ReactPlayer from "react-player";
 import { usePlayAnimeQuery } from "../Api/animeApiSlice";
-import { useEffect, useRef } from "react";
-import VPlayer from "vnetwork-player";
-import Hls from "hls.js";
-import "vnetwork-player/dist/vnetwork-player.min.css"; // import css
 
 const PlayAnime = ({ isPlaying }) => {
-  const playerRef = useRef(null);
-
   const { data, isLoading } = usePlayAnimeQuery({ id: isPlaying });
 
+  console.log(data);
+
+  let content;
+
   if (isLoading) {
-    return <>Loiadng....</>;
+    content = <>Loiadng....</>;
+  } else {
+    content = (
+      <div className="player-wrapper">
+        <ReactPlayer
+          url={`${data?.sources[4]?.url}`}
+          controls={true}
+          playing={true}
+          // onDuration={(e) => console.log(Math.floor(e))}
+          // onProgress={(e) => console.log(Math.floor(e.playedSeconds))}
+          width="100%"
+          height="100%"
+        />
+      </div>
+    );
   }
 
   return (
     <>
-      <div id="demo-vnetwork-player">
-        <div className=" md:w-[600px]  lg:w-[1200px] aspect-video mt-5">
-          {isLoading ? (
-            "loading"
-          ) : (
-            <VPlayer
-              source={data?.sources?.map((item) => {
-                return {
-                  ...item,
-                  label: item.quality,
-                };
-              })}
-              color="#ff0000"
-              autoPlay
-              subtitle={[
-                {
-                  lang: "Fr",
-                  url: "/fr.vtt",
-                },
-                {
-                  lang: "En",
-                  url: "/en.vtt",
-                },
-              ]}
-              playerRef={playerRef}
-              Hls={Hls}
-            />
-          )}
-        </div>
+      <div className=" md:w-[600px]  lg:w-[1200px] aspect-video ">
+        {content}
       </div>
     </>
   );

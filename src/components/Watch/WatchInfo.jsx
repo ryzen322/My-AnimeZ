@@ -9,8 +9,6 @@ const WatchInfo = () => {
   const id = useParams();
   const { data, isLoading } = useGetInfoAnimeQuery(id);
 
-  console.log(data);
-
   return (
     <section className=" h-auto w-full  relative">
       <WatchHeading loading={isLoading} data={data} paramID={id} />
