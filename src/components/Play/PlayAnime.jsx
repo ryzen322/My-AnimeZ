@@ -28,9 +28,7 @@ const PlayAnime = ({ isPlaying }) => {
 
   return (
     <>
-      <div className=" md:w-[600px]  lg:w-[1200px] aspect-video ">
-        {content}
-      </div>
+      <div className="  lg:w-[1200px] aspect-video ">{content}</div>
     </>
   );
 };
