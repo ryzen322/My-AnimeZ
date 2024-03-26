@@ -9,6 +9,7 @@ const animeSlice = createSlice({
     playerObject: defaultValue,
     playingCard: "",
     selectedAnime: [],
+    playEpisodes: null,
   },
   reducers: {
     playingTrailer: (state, action) => {
@@ -26,6 +27,9 @@ const animeSlice = createSlice({
     selectedAnime: (state, action) => {
       state.selectedAnime = action.payload;
     },
+    playEpisodes: (state, action) => {
+      state.playEpisodes = action.payload;
+    },
   },
 });
 
@@ -35,6 +39,7 @@ export const {
   playingYtTrailer,
   playingCards,
   selectedAnime,
+  playEpisodes,
 } = animeSlice.actions;
 
 export default animeSlice.reducer;

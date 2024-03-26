@@ -6,7 +6,7 @@ export const LoadingAnime = ({ length, className }) => {
   });
 
   return (
-    <div className=" flex gap-1 sm:gap-1 mb-6 px-3 overflow-hidden">
+    <div className=" flex gap-1 sm:gap-1 mb-6 px-3 overflow-hidden mt-4">
       {array.map((item) => (
         <div
           key={item.id}

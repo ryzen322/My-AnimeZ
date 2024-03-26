@@ -2,11 +2,20 @@ import { useParams } from "react-router-dom";
 import PlayAnime from "./Play/PlayAnime";
 import { useGetInfoAnimeQuery } from "./Api/animeApiSlice";
 import { useMemo, useState } from "react";
+import BackgroundUi from "./LoadingUI.jsx/BackgroundUi";
+import { useDispatch, useSelector } from "react-redux";
+import { playEpisodes } from "./Api/animeSlice";
+import Comment from "./Comment";
+import Recommendations from "./Recommendations";
+import Carousel from "./Carousel";
+import Footer from "./Footer";
 
 const Player = () => {
   const id = useParams();
-  const [isPlaying, setIsPlaying] = useState(null);
+  const { playEpisodes: playEp } = useSelector((state) => state.anime);
+
   const [pages, setPages] = useState(0);
+  const dispatch = useDispatch();
   const { data, isLoading } = useGetInfoAnimeQuery(id);
   const animeNext =
     data?.episodes.length < 30 ? 1 : data?.episodes.length / 30 + 1;
@@ -40,46 +49,68 @@ const Player = () => {
   function nextPages(pageNumber) {
     setPages(pageNumber);
   }
-
-  function playedAnime(item) {
-    setIsPlaying(item);
-  }
+  const textData = data?.description;
 
   return (
-    <section className=" p-1 font-Robot overflow-hidden ">
-      <div className=" flex flex-col gap-1 2xl:flex-row">
-        {isPlaying && <PlayAnime isPlaying={isPlaying} />}
-        {!isPlaying && (
-          <div className=" 2xl:w-[1200px] aspect-video bg-slate-600 cursor-pointer rounded"></div>
+    <section className=" p-1 font-Robot overflow-hidden relative ">
+      <div className=" flex flex-col gap-1 group lg:flex-row">
+        {playEp && (
+          <PlayAnime
+            filteredEpisodes={filter}
+            nextPages={nextPages}
+            episodesArray={episodesArray}
+          />
         )}
-        <div className=" flex flex-col bg-stone-600 rounded px-3 py-2 gap-1 sm:bg-slate-500 md:bg-stone-500 2xl:w-[25%]">
-          <div className="  w-full  flex scroll-smooth overflow-scroll no-scrollbar snap-proximity snap-x rounded gap-1">
-            {episodesArray.map((item) => (
+        {!playEp && (
+          <div className="  aspect-video cursor-pointer w-full rounded overflow-hidden relative xl:h-[35rem]">
+            <picture>
+              <source media="(min-width:768px)" srcSet={data?.cover} />
+              <img
+                className=" w-full h-full object-cover rounded-md absolute top-0 left-0 right-0 bottom-0"
+                src={`${data?.trailer?.thumbnail || data?.image}`}
+              />
+            </picture>
+            <div className=" relative z-30 w-full h-full flex flex-col justify-end p-[1rem] sm:max-w-[25rem] md:max-w-[30rem] xl:justify-center xl:max-w-[40rem]">
+              <h1 className=" text-[#FBFBFB] font-semibold text-2xl my-2 sm:text-3xl md:text-4xl">
+                {data?.title?.english}
+              </h1>
+              <p
+                className=" text-base hidden text-stone-300 lg:block lg:text-lg font-medium"
+                dangerouslySetInnerHTML={{ __html: textData }}
+              />
+              <p className=" text-stone-400 text-xs font-medium sm:text-sm lg:text-stone-300 xl:text-lg">
+                Duration: 29
+              </p>
+              <p className=" text-stone-400 text-xs font-medium sm:text-sm lg:text-stone-300 xl:text-lg">
+                Episodes Total: 299
+              </p>
+              <p className=" text-stone-400 text-xs font-medium sm:text-sm lg:text-stone-300 xl:text-lg">
+                Rating: 29
+              </p>
+              <p className=" text-stone-400 text-xs font-medium my-4 sm:text-sm lg:text-stone-300 xl:text-lg">
+                Series - Action - 2022
+              </p>
+
               <div
-                key={item.id}
-                className=" bg-black/80 h-[2rem] min-w-[7rem] rounded-md text-xs font-bold flex justify-center items-center cursor-pointer sm:min-w-[9rem]"
-                onClick={() => nextPages(item.pagePrev)}
+                className=" py-2 px-4 bg-white text-black flex justify-center items-center rounded-lg text-sm font-semibold hover:bg-white/70 sm:text-base xl:w-[7.5rem] xl:text-lg"
+                onClick={() => dispatch(playEpisodes(data?.episodes[0]?.id))}
               >
-                <p className=" sm:text-sm">
-                  Episodes {item.pagePrev === 0 ? 1 : item.pagePrev + 1} -{" "}
-                  {item.pageNext}
-                </p>
+                Play Now
               </div>
-            ))}
+            </div>
+            <BackgroundUi />
           </div>
-          <div className=" flex flex-wrap gap-1 justify-center">
-            {filter[0]?.item?.map((item) => (
-              <button
-                key={item.id}
-                className=" bg-white text-black rounded mt-1 w-[3rem] text-sm py-1 font-bold flex justify-center items-center 2xl:text-lg 2xl:w-[5rem] "
-                onClick={() => playedAnime(item.id)}
-              >
-                {item.title}
-              </button>
-            ))}
-          </div>
-        </div>
+        )}
       </div>
+      <div className=" flex flex-col gap-3 my-6 lg:flex-row">
+        <Comment />
+        <Recommendations recommend={data?.recommendations} />
+      </div>
+
+      <Carousel genreAnime={"trending"} title={"Trending"} />
+      <Carousel genreAnime={"popular"} title={"Popular"} />
+
+      <Footer />
     </section>
   );
 };

@@ -1,10 +1,15 @@
 import ReactPlayer from "react-player";
 import { usePlayAnimeQuery } from "../Api/animeApiSlice";
+import { useSelector } from "react-redux";
+import Episodes from "../Episodes";
 
-const PlayAnime = ({ isPlaying }) => {
-  const { data, isLoading } = usePlayAnimeQuery({ id: isPlaying });
-
-  console.log(data);
+const PlayAnime = ({
+  filteredEpisodes = [],
+  nextPages,
+  episodesArray = [],
+}) => {
+  const { anime } = useSelector((state) => state);
+  const { data, isLoading } = usePlayAnimeQuery({ id: anime.playEpisodes });
 
   let content;
 
@@ -12,7 +17,7 @@ const PlayAnime = ({ isPlaying }) => {
     content = <>Loiadng....</>;
   } else {
     content = (
-      <div className="player-wrapper">
+      <div className=" w-full h-full">
         <ReactPlayer
           url={`${data?.sources[4]?.url}`}
           controls={true}
@@ -28,7 +33,14 @@ const PlayAnime = ({ isPlaying }) => {
 
   return (
     <>
-      <div className="  lg:w-[1200px] aspect-video ">{content}</div>
+      <div className="  aspect-video cursor-pointer w-full rounded overflow-hidden relative  xl:h-[35rem]">
+        {content}
+      </div>
+      <Episodes
+        filteredEpisodes={filteredEpisodes}
+        nextPages={nextPages}
+        episodesArray={episodesArray}
+      />
     </>
   );
 };
