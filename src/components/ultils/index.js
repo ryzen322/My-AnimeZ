@@ -1,3 +1,5 @@
+import { useMemo, useState } from "react";
+
 export const defaultValue = {
   id: "11061",
   color: "#f1d65d",
@@ -25,4 +27,48 @@ export const defaultValue = {
     thumbnail: "https://i.ytimg.com/vi/d6kBeJjTGnY/hqdefault.jpg",
   },
   tv: "TV",
+};
+
+export const useEpisode = (data) => {
+  const [pages, setPages] = useState(0);
+
+  const animeNext =
+    data?.episodes.length < 30 ? 1 : data?.episodes.length / 30 + 1;
+
+  const array = Array.from({ length: animeNext }, (_, index) => {
+    return {
+      id: index + 1,
+      pagePrev: index + 1 === 1 ? 0 : (index + 1) * 30 - 30,
+      pageNext: (index + 1) * 30,
+    };
+  });
+
+  const episodesArray = [];
+
+  for (const arr of array) {
+    const episode = {
+      item: data.episodes.slice(arr.pagePrev, arr.pageNext),
+      id: arr.id,
+      pagePrev: arr.pagePrev,
+      pageNext: data.episodes.length < 29 ? data.episodes.length : arr.pageNext,
+    };
+
+    episodesArray.push(episode);
+  }
+
+  const filter = useMemo(
+    () => episodesArray.filter((item) => item.pagePrev === pages),
+    [episodesArray, pages]
+  );
+
+  function nextPages(pageNumber) {
+    setPages(pageNumber);
+  }
+
+  return {
+    pages,
+    nextPages,
+    filter,
+    episodesArray,
+  };
 };

@@ -1,13 +1,14 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+const url = import.meta.env.VITE_REACT_API_URL;
+
 const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:3000/meta/anilist/",
+  baseUrl: `${url}meta/anilist/`,
 });
 
 const Api = createApi({
   baseQuery,
-  tagTypes: ["Anime"],
-  endpoints: (builder) => ({}),
+  endpoints: () => ({}),
 });
 
 export default Api;

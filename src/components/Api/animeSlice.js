@@ -42,4 +42,6 @@ export const {
   playEpisodes,
 } = animeSlice.actions;
 
+export const playEp = (state) => state.anime.playEpisodes;
+
 export default animeSlice.reducer;

@@ -10,7 +10,7 @@ const store = configureStore({
   middleware: (getDefaltMiddleWare) =>
     getDefaltMiddleWare({
       serializableCheck: false,
-    }).concat(Api.middleware),
+    }).concat([Api.middleware]),
   devTools: true,
 });
 

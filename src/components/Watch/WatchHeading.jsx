@@ -5,11 +5,19 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
 import LoadingHeading from "../LoadingUI.jsx/LoadingHeading";
 import { FaPlay } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { playEpisodes } from "../Api/animeSlice";
 
 const WatchHeading = ({ loading, data = {}, paramID }) => {
+  const dispatch = useDispatch();
+
   if (loading) {
     return <LoadingHeading />;
   }
+
+  const playAnime = () => {
+    dispatch(playEpisodes(data?.episodes[0]?.id));
+  };
 
   return (
     <>
@@ -32,7 +40,7 @@ const WatchHeading = ({ loading, data = {}, paramID }) => {
           />
           <div className=" absolute z-30 top-0 left-0 right-0 bottom-0 h-full w-full flex justify-center items-center">
             <div className=" h-[4.5rem] w-[4.5rem] bg-black/60 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-200 ease-in-out flex items-center justify-center">
-              <Link to={`/watch/play/${paramID?.id}`}>
+              <Link to={`/watch/play/${paramID?.id}`} onClick={playAnime}>
                 <FaPlay
                   size={"35"}
                   className=" text-stone-400 hover:text-white transition-all duration-200"

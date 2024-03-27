@@ -40,9 +40,7 @@ export const animeApiSlice = Api.injectEndpoints({
       },
     }),
     getAllAnime: builder.query({
-      query: (params) => {
-        // const { pages, perPage: totalPages } = params;
-
+      query: () => {
         return {
           url: "recent-episodes",
           params: {
