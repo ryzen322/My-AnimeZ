@@ -23,6 +23,7 @@ const HeroPlayer = () => {
           <source media="(min-width:768px)" srcSet={playerObject.cover} />
           <img
             className=" w-full h-full object-cover rounded-md"
+            loading="lazy"
             src={`${playerObject?.trailer.thumbnail}`}
           />
         </picture>

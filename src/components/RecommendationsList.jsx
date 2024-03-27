@@ -12,7 +12,12 @@ const RecommendationsList = ({
   return (
     <li className=" min-w-[374px] rounded-xl relative overflow-hidden  cursor-pointer font-Roboto h-[498px] bg-[#252525] flex items-center lg:min-h-[160px] lg:p-3 w-full">
       <div className=" w-full h-full rounded-md overflow-hidden relative lg:w-[125px] ">
-        <img className=" w-full h-full object-cover" src={image} alt="" />
+        <img
+          className=" w-full h-full object-cover"
+          loading="lazy"
+          src={image}
+          alt=""
+        />
         <BackgroundUi />
       </div>
 

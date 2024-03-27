@@ -19,6 +19,7 @@ const Recomendation = ({ data, loading }) => {
           >
             <img
               className=" w-full h-full object-cover rounded-lg relative z-10 top-0 left-0 right-0 bottom-0"
+              loading="lazy"
               src={item.image}
               alt=""
             />

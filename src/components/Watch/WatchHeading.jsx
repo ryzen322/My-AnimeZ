@@ -26,6 +26,7 @@ const WatchHeading = ({ loading, data = {}, paramID }) => {
           <source media="(min-width:768px)" srcSet={data.cover} />
           <img
             className=" w-full h-full object-cover rounded-md"
+            loading="lazy"
             src={data?.trailer?.thumbnail || data?.image}
           />
         </picture>
@@ -36,6 +37,7 @@ const WatchHeading = ({ loading, data = {}, paramID }) => {
           <img
             className=" w-full h-full object-cover overflow-hidden rounded-md"
             src={data.image}
+            loading="lazy"
             alt=""
           />
           <div className=" absolute z-30 top-0 left-0 right-0 bottom-0 h-full w-full flex justify-center items-center">

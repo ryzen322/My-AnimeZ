@@ -21,6 +21,7 @@ const Character = ({ loading, data }) => {
                 className=" w-full h-full object-cover rounded-lg relative z-10 top-0 left-0 right-0 bottom-0"
                 src={item.image}
                 alt=""
+                loading="lazy"
               />
               <div className=" absolute z-30 h-full w-full top-0 left-0 right-0 bottom-0 p-1 flex flex-col justify-end">
                 <h1 className=" text-stone-300 text-lg">

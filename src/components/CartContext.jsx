@@ -9,6 +9,7 @@ const CartContext = ({ item }) => {
         className=" absolute top-0 left-0 right-0 bottom-0 object-cover w-full h-full "
         src={item.image}
         alt=""
+        loading="lazy"
       />
       <div className=" relative flex flex-col h-full font-Roboto px-2 z-30">
         <div className=" w-full p-1">
