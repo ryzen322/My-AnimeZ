@@ -9,7 +9,6 @@ const NavBar = () => {
 
   function toggleNav() {
     setNavToggle((prev) => !prev);
-    console.log("clicked");
   }
 
   useEffect(() => {

@@ -7,7 +7,7 @@ const Navigation = () => {
     <>
       <NavBar />
 
-      <main className="  mt-[4.65rem]">
+      <main className="  mt-[4.65rem] scroll-smooth">
         <Outlet />
         <ScrollToTop />
       </main>
