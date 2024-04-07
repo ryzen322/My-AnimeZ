@@ -9,7 +9,6 @@ const NavLBarList = ({ toggleNav }) => {
   const { signOut } = useClerk();
   const navigate = useNavigate();
   const { isSignedIn, user, isLoaded } = useUser();
-  console.log(isSignedIn);
 
   return (
     <ul className=" absolute left-0 top-[4rem] w-full  h-screen font-Roboto xl:relative xl:top-0 xl:h-auto xl:pl-[5rem]">
