@@ -1,5 +1,9 @@
 import { useDispatch } from "react-redux";
-import { playingTrailer, playingYtTrailer } from "./Api/animeSlice";
+import {
+  playingTrailer,
+  playingYtTrailer,
+  addFavorites,
+} from "./Api/animeSlice";
 import { FaPlay } from "react-icons/fa6";
 import { AiOutlineExclamationCircle } from "react-icons/ai";
 
@@ -11,6 +15,9 @@ const CartList = ({ english, genres, image, item }) => {
   }
   function displayInfo() {
     dispatch(playingYtTrailer(item));
+  }
+  function addFavorite() {
+    dispatch(addFavorites(item));
   }
 
   return (
@@ -40,6 +47,9 @@ const CartList = ({ english, genres, image, item }) => {
               onClick={displayInfo}
             >
               <AiOutlineExclamationCircle />
+            </button>
+            <button className=" text-white" onClick={addFavorite}>
+              Likes
             </button>
           </div>
         </div>

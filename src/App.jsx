@@ -5,13 +5,19 @@ import Navigation from "./components/Navigation/Navigation";
 import Watch from "./pages/Watch";
 import WatchInfo from "./components/Watch/WatchInfo";
 import Authpage from "./pages/AuthPage";
+import { useSelector } from "react-redux";
 
 import Player from "./components/Player";
 import SignInPage from "./pages/SignInPage";
 import { useUser } from "@clerk/clerk-react";
+import { favorites } from "./components/Api/animeSlice";
 
 function App() {
   const { isSignedIn, user, isLoaded } = useUser();
+
+  const myFavorites = useSelector(favorites);
+
+  console.log(myFavorites);
 
   return (
     <Routes>
