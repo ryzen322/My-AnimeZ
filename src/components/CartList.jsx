@@ -7,16 +7,10 @@ const CartList = ({ english, genres, image, item }) => {
   const dispatch = useDispatch();
 
   function playerFunc() {
-    console.log("player");
     dispatch(playingTrailer(item));
   }
   function displayInfo() {
-    console.log("info");
     dispatch(playingYtTrailer(item));
-  }
-
-  function clicked() {
-    console.log("clicked");
   }
 
   return (

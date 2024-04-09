@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import ReactPlayer from "react-player";
 import Cards from "../Cards";
+import BackgroundUi from "../LoadingUI.jsx/BackgroundUi";
 
-const Trailer = ({ data }) => {
+const Trailer = () => {
   const { playerObject, player } = useSelector((state) => state.anime);
 
   return (
@@ -19,14 +20,22 @@ const Trailer = ({ data }) => {
             />
           </div>
         ) : (
-          <div className=" aspect-video bg-stone-500 rounded-md flex flex-col justify-center gap-1 px-2 md:bg-slate-500 md:justify-end md:py-2 lg:bg-stone-800 xl:h-[35rem] 2xl:h-[43rem]">
-            <div className=" h-[2rem] w-[15rem] bg-green-400 rounded-md md:h-[3rem] md:w-[25rem]" />
+          <div className=" aspect-video relative bg-stone-500 rounded-md flex flex-col justify-center gap-1 md:bg-slate-500 md:justify-end md:py-2 lg:bg-stone-800 xl:h-[35rem] 2xl:h-[43rem]">
+            <picture>
+              <img
+                className=" w-full h-full object-cover rounded-md "
+                loading="lazy"
+                src={`${playerObject?.trailer.thumbnail}`}
+              />
+            </picture>
+            {/* <div className=" h-[2rem] w-[15rem] bg-green-400 rounded-md md:h-[3rem] md:w-[25rem]" />
             <div className=" h-[2rem] w-[10rem] bg-green-400 rounded-md md:h-[3rem] md:w-[15rem]" />
-            <div className=" h-[2rem] w-[5rem] bg-green-400 rounded-md md:h-[3rem] md:w-[10rem]" />
+            <div className=" h-[2rem] w-[5rem] bg-green-400 rounded-md md:h-[3rem] md:w-[10rem]" /> */}
+            <BackgroundUi />
           </div>
         )}
       </div>
-      <Cards data={data} />
+      <Cards />
     </div>
   );
 };

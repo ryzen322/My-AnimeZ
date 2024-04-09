@@ -1,7 +1,15 @@
-import { AiOutlineExclamationCircle } from "react-icons/ai";
 import CartList from "./CartList";
+import { useState } from "react";
+import { useGetPopularAnimeQuery } from "../components/Api/animeApiSlice";
 
-const Cards = ({ data }) => {
+const Cards = () => {
+  const [page, setPage] = useState({
+    pages: 2,
+    perPage: 20,
+  });
+  const { data, isLoading, isError, isSuccess, isFetching } =
+    useGetPopularAnimeQuery({ page });
+
   return (
     <ul className=" w-full flex gap-2 px-1 overflow-auto rounded-md no-scrollbar xl:h-[35rem] 2xl:h-[43rem] xl:flex-col xl:py-1">
       {data?.results?.map((item) => (
