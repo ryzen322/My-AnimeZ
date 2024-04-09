@@ -7,6 +7,7 @@ import Collections from "../components/Collections";
 import Carousel from "../components/Carousel";
 import AllAnime from "../components/AllAnime";
 import Footer from "../components/Footer";
+import Trailer from "../components/trailer/Trailer";
 
 const HomePage = () => {
   const [page, setPage] = useState({
@@ -19,8 +20,9 @@ const HomePage = () => {
   return (
     <div className=" w-full h-auto xl:container xl:mx-auto">
       <section className=" flex flex-col relative">
-        <HeroPlayer />
-        <Cards data={data} />
+        {/* <HeroPlayer />
+        <Cards data={data} /> */}
+        <Trailer data={data} />
       </section>
 
       <Collections />

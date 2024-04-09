@@ -13,8 +13,6 @@ import { useUser } from "@clerk/clerk-react";
 function App() {
   const { isSignedIn, user, isLoaded } = useUser();
 
-  console.log(user);
-
   return (
     <Routes>
       <Route element={<Navigation />}>

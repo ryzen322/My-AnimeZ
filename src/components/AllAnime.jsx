@@ -30,16 +30,16 @@ const AllAnime = () => {
     context = <LoadingAnime length={9} />;
   } else {
     context = (
-      <div className=" flex gap-2 justify-center flex-wrap sm:gap-1 scroll-smooth h-auto">
+      <ul className=" flex gap-2 justify-center flex-wrap sm:gap-1 scroll-smooth h-auto">
         {data?.results?.map((item) => (
-          <div
+          <li
             key={item.id}
             className=" relative h-[16.5rem] rounded-md max-w-[155px] xl:min-w-[163px] overflow-hidden group cursor-pointer"
           >
             <CartContext item={item} />
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     );
   }
 

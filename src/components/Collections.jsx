@@ -35,7 +35,7 @@ const Collections = () => {
   ];
 
   return (
-    <div className="mt-[18rem] mb-[5rem] sm:mt-[23rem]">
+    <div className="mt-[5rem] mb-[5rem] sm:mt-[23rem]">
       <H1Headling>Prefered Collections</H1Headling>
 
       <section className=" w-full px-4 grid grid-cols-1 gap-8 md:grid-cols-2 lg:gap-2 2xl:gap-4">

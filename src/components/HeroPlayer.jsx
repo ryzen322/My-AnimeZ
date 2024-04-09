@@ -2,13 +2,13 @@ import ReactPlayer from "react-player";
 import { useSelector } from "react-redux";
 import { FaRegBookmark } from "react-icons/fa";
 
-const HeroPlayer = () => {
+const HeroPlayer = ({ isLoading }) => {
   const { playerObject, player } = useSelector((state) => state.anime);
 
   return (
-    <div className=" h-[25rem] w-full overflow-hidden ">
+    <div className=" h-[25rem] w-full overflow-hidden  ">
       {player ? (
-        <div className=" w-full h-full object-contain">
+        <div className=" w-full h-full object-contain ">
           <ReactPlayer
             // className="reactPlayer"
             width="100%"
