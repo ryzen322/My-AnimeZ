@@ -1,7 +1,10 @@
 import H1Headling from "./LoadingUI.jsx/H1Headling";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import { useUser } from "@clerk/clerk-react";
 
 const Comment = () => {
+  const { isSignedIn, user, isLoaded } = useUser();
+
   function handleForm(e) {
     e.preventDefault();
   }
@@ -15,11 +18,23 @@ const Comment = () => {
         className=" w-full  rounded-md flex flex-col gap-3 my-2"
       >
         <div className=" flex w-full gap-3">
-          <div className=" h-[2.5rem] w-[2.5rem]  rounded-full bg-white"></div>
+          <div
+            className={` h-[2.5rem] w-[2.5rem] overflow-hidden  rounded-full ${
+              user ? "" : "bg-white"
+            }`}
+          >
+            {user && (
+              <img
+                src={`${user?.imageUrl}`}
+                alt=""
+                className=" w-full h-full object-cover rounded-full"
+              />
+            )}
+          </div>
           <input
             className=" flex-1 outline-none text-white px-3 font-semibold border-b text-sm bg-primaryColor"
             type="text"
-            placeholder="Add a comment . . . "
+            placeholder={`Add a comment ${user?.firstName} `}
           />
         </div>
         <div className=" flex flex-1 justify-end gap-2">

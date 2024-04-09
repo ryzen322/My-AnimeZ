@@ -9,7 +9,7 @@ const Episodes = ({
     selectEpisode(ep);
   }
 
-  const currentPage = filteredEpisodes[0].pagePrev;
+  const currentPage = filteredEpisodes[0]?.pagePrev;
 
   return (
     <div className=" flex flex-col bg-gray-800 rounded  px-3 py-2 gap-2 lg:absolute lg:w-[40%]  lg:top-[5rem] lg:-right-[50rem] group-hover:right-[0.5rem] duration-300 ease-in 2xl:top-[2rem]">

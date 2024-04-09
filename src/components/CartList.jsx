@@ -14,10 +14,7 @@ const CartList = ({ english, genres, image, item }) => {
   }
 
   return (
-    <li
-      className=" h-[16rem] min-w-[180px] overflow-hidden rounded-md flex items-center gap-2 relative cursor-pointer xl:min-h-[9rem] xl:p-1 flex-wrap bg-stone-800"
-      onClick={clicked}
-    >
+    <li className=" h-[16rem] min-w-[180px] overflow-hidden rounded-md flex items-center gap-2 relative cursor-pointer xl:min-h-[9rem] xl:p-1 flex-wrap bg-stone-800">
       <div className=" w-full h-full rounded-md relative xl:w-[40%]">
         <img
           src={`${image}`}
