@@ -11,7 +11,7 @@ const Cards = () => {
     useGetPopularAnimeQuery({ page });
 
   return (
-    <ul className=" w-full flex gap-2 px-1 overflow-auto rounded-md no-scrollbar xl:h-[35rem] 2xl:h-[43rem] xl:flex-col xl:py-1">
+    <ul className=" w-full flex gap-2 px-1 overflow-auto rounded-md no-scrollbar xl:h-[35rem] xl:flex-col xl:py-1 2xl:h-[43rem] ">
       {data?.results?.map((item) => (
         <CartList
           key={item.id}

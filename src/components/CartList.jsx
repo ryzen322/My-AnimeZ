@@ -21,8 +21,8 @@ const CartList = ({ english, genres, image, item }) => {
   }
 
   return (
-    <li className=" h-[16rem] min-w-[180px] overflow-hidden rounded-md flex items-center gap-2 relative cursor-pointer xl:min-h-[9rem] xl:p-1 flex-wrap bg-stone-800">
-      <div className=" w-full h-full rounded-md relative xl:w-[40%]">
+    <li className=" h-[16rem] min-w-[180px] overflow-hidden rounded-md flex items-center gap-2 relative cursor-pointer xl:min-h-[9rem] xl:p-2 flex-wrap bg-stone-800 xl:gap-4">
+      <div className=" w-full h-full object-cover rounded-md relative xl:w-[30%]">
         <img
           src={`${image}`}
           alt=""
@@ -49,19 +49,21 @@ const CartList = ({ english, genres, image, item }) => {
               <AiOutlineExclamationCircle />
             </button>
             <button className=" text-white" onClick={addFavorite}>
-              Likes
+              {/* Likes */}
             </button>
           </div>
         </div>
       </div>
       <div className=" hidden xl:flex flex-col justify-center gap-2 text-sm w-[8.8rem] h-full white">
-        <h1 className=" text-white text-xs font-semibold">{english}</h1>
+        <h1 className=" text-white text-xs font-semibold xl:text-sm">
+          {english}
+        </h1>
         <div className=" flex gap-x-1 text-stone-400 text-xs flex-wrap font-normal">
           {genres?.map((item) => (
-            <h1 key={item}>{item}</h1>
+            <h1 key={item}>{item},</h1>
           ))}
         </div>
-        <div className=" flex gap-2 my-1">
+        <div className=" flex gap-2 my-1 mt-auto ">
           <button
             className=" bg-white text-black rounded-md text-xs flex justify-center items-center gap-2 active:ring ring-white px-3 font-semibold"
             onClick={playerFunc}

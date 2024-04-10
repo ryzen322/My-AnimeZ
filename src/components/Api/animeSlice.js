@@ -10,7 +10,9 @@ const animeSlice = createSlice({
     playingCard: "",
     selectedAnime: [],
     playEpisodes: null,
-    favorites: [...JSON.parse(localStorage.getItem("favorites"))],
+    favorites: JSON.parse(localStorage.getItem("favorites"))
+      ? [JSON.parse(localStorage.getItem("favorites"))]
+      : [],
   },
   reducers: {
     playingTrailer: (state, action) => {
@@ -35,7 +37,6 @@ const animeSlice = createSlice({
       const item = action.payload;
 
       const find = state.favorites.find((data) => data.id === item.id);
-
       if (!find) {
         state.favorites.push(item);
         localStorage.setItem("favorites", JSON.stringify(state.favorites));
