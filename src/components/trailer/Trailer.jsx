@@ -8,7 +8,7 @@ const Trailer = () => {
 
   return (
     <div className=" flex flex-col rounded-md overflow-hidden font-Roboto p-1 gap-2  xl:flex-row">
-      <div className=" aspect-video overflow-hidden rounded-md xl:min-w-[70%]">
+      <div className=" aspect-video overflow-hidden rounded-md xl:min-w-[70%] flex-grow">
         {player ? (
           <ReactPlayer
             width="100%"
@@ -21,7 +21,7 @@ const Trailer = () => {
           <div className=" h-full w-full relative rounded-md">
             <picture>
               <img
-                className=" w-full h-full rounded-md "
+                className=" w-full h-full rounded-md object-cover"
                 loading="lazy"
                 src={`${playerObject?.trailer.thumbnail}`}
               />

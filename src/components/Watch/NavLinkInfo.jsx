@@ -11,7 +11,7 @@ const NavLinkInfo = ({
 
   return (
     <button
-      className={` py-1 px-3 border-b-[2px]  hover:border-[#cccc] hover:text-white transition-all duration-200 text-lg font-medium ${
+      className={` py-1 px-3 border-b-[2px]  hover:border-[#cccc] hover:text-white transition-all duration-200 text-md font-medium md:text-xl ${
         activeElement
           ? `text-white border-[#cccc]`
           : ` text-[#cccc] border-[#cccc]/35`

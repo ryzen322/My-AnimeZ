@@ -27,7 +27,7 @@ const WatchInfo = () => {
       <WatchHeading loading={isLoading} data={data} paramID={id} />
       <WatchArcticle loading={isLoading} data={data} />
       <Recomendation loading={isLoading} data={data} />
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 };

@@ -11,17 +11,19 @@ const Cards = () => {
     useGetPopularAnimeQuery({ page });
 
   return (
-    <ul className=" w-full flex gap-2 px-1 overflow-auto rounded-md no-scrollbar xl:h-[35rem] xl:flex-col xl:py-1 2xl:h-[43rem] ">
-      {data?.results?.map((item) => (
-        <CartList
-          key={item.id}
-          image={item.image}
-          genres={item.genres}
-          english={item.title.english}
-          item={item}
-        />
-      ))}
-    </ul>
+    <div className=" bg-[#18181C] p-2 rounded-md m-1">
+      <ul className=" w-full flex gap-2  overflow-auto rounded-md no-scrollbar  xl:h-[35rem] xl:flex-col xl:py-1 2xl:h-[43rem] ">
+        {data?.results?.map((item) => (
+          <CartList
+            key={item.id}
+            image={item.image}
+            genres={item.genres}
+            english={item.title.english}
+            item={item}
+          />
+        ))}
+      </ul>
+    </div>
   );
 };
 

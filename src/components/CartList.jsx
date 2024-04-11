@@ -21,12 +21,12 @@ const CartList = ({ english, genres, image, item }) => {
   }
 
   return (
-    <li className=" h-[16rem] min-w-[180px] overflow-hidden rounded-md flex items-center gap-2 relative cursor-pointer xl:min-h-[9rem] xl:p-2 flex-wrap bg-stone-800 xl:gap-4">
-      <div className=" w-full h-full object-cover rounded-md relative xl:w-[30%]">
+    <li className=" h-[10rem] min-w-[130px] overflow-hidden bg-[#252525] rounded-2xl flex items-center gap-2 relative cursor-pointer sm:h-[16rem] sm:min-w-[180px] xl:min-h-[9rem] xl:p-3 flex-wrap xl:gap-4 xl:hover:bg-[#363636] transition-all duration-200 ease-in-out">
+      <div className=" w-full h-full object-cover rounded-md relative xl:w-[30%] ">
         <img
           src={`${image}`}
           alt=""
-          className=" w-full h-full object-fill rounded-md relative"
+          className=" w-full h-full object-cover rounded-md relative"
         />
         <div className=" absolute w-full h-full  top-0 left-0 right-0 flex flex-col justify-end z-30 p-1 xl:hidden">
           <h1 className=" text-white text-sm font-semibold">{english}</h1>
@@ -35,15 +35,16 @@ const CartList = ({ english, genres, image, item }) => {
               <h1 key={item}>{item}</h1>
             ))}
           </div>
-          <div className=" flex gap-2 my-1">
+          <div className=" flex gap-1 my-1 ">
             <button
               className=" bg-white text-black rounded-md text-xs flex justify-center items-center gap-2 active:ring ring-white px-3 font-semibold"
               onClick={playerFunc}
             >
-              <FaPlay /> Play Trailer
+              <FaPlay />
+              <p className=" hidden sm:block">Play Trailer</p>
             </button>
             <button
-              className=" bg-white/35 rounded-md py-2 flex justify-center items-center gap-2 active:ring ring-white px-3 text-lg"
+              className=" bg-white/35 rounded-md py-1 flex justify-center items-center gap-2 active:ring ring-white px-3 text-lg sm:py-2"
               onClick={displayInfo}
             >
               <AiOutlineExclamationCircle />
@@ -54,7 +55,7 @@ const CartList = ({ english, genres, image, item }) => {
           </div>
         </div>
       </div>
-      <div className=" hidden xl:flex flex-col justify-center gap-2 text-sm w-[8.8rem] h-full white">
+      <div className=" hidden xl:flex flex-col justify-center gap-2 text-sm w-[8.8rem] h-full flex-grow">
         <h1 className=" text-white text-xs font-semibold xl:text-sm">
           {english}
         </h1>
