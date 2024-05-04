@@ -45,7 +45,7 @@ const PlayAnime = ({
     content = (
       <div className=" w-full h-full">
         <ReactPlayer
-          url={`${data?.sources[4]?.url}`}
+          url={`${data?.sources[0]?.url}`}
           controls={true}
           playing={true}
           onDuration={(e) => setDuration(Math.floor(e))}
